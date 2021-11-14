@@ -52,6 +52,10 @@ namespace ShowPlayStats
 
 		private static void OnUpdate(UnityModManager.ModEntry modEntry, float deltaTime)
         {
+			if (!scrConductor.instance || !scrController.instance)
+            {
+				return;
+            }
 			isplaying = !scrController.instance.paused && scrConductor.instance.isGameWorld;
 			if (isplaying)
             {

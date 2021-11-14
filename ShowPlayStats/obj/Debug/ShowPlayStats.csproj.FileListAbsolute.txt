@@ -17,7 +17,6 @@ C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\D
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\UnityEngine.UIModule.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\UnityEngine.ParticleSystemModule.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\UnityEngine.Physics2DModule.dll
-C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\RDTools.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\UnityEngine.AssetBundleModule.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\UnityEngine.InputLegacyModule.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\UnityEngine.AnimationModule.dll
