@@ -7,8 +7,8 @@
     <ProjectGuid>{EC2BA238-6A54-44CF-A54A-0C4E96BB67C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DeathsCounter</RootNamespace>
-    <AssemblyName>DeathsCounter</AssemblyName>
+    <RootNamespace>ShowPlayStats</RootNamespace>
+    <AssemblyName>ShowPlayStats</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
