@@ -21,7 +21,7 @@ namespace ShowPlayStats
 		private void OnGUI()
 		{
 			bool fontshadow = Main.setting.fontshadow;
-			GUIStyle style = GUI.skin.GetStyle("DeathsCounter_text");
+			GUIStyle style = new GUIStyle();
 			style.fontSize = Main.setting.fontsize;
 			this.ShadowTextStyle.fontSize = Main.setting.fontsize;
 			style.font = RDString.GetFontDataForLanguage(RDString.language).font;
@@ -37,7 +37,7 @@ namespace ShowPlayStats
 			{
 				GUI.Label(this.ShadowTextLocation, Text.Content, this.ShadowTextStyle);
 			}
-			GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content, "TileCounter_text");
+			GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content, style);
 
 			if (Main.setting.DeathCount)
 			{/*
@@ -51,7 +51,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content2, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content2, "TileCounter_text2");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content2, style);
 			}
 			if (!Main.setting.DeathCount)
             {/*
@@ -65,7 +65,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content2, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content2, "TileCounter_text2");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content2, style);
 			}
 
 			if (Main.setting.Progress && Main.setting.DeathCount)
@@ -80,7 +80,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content3, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, "TileCounter_text3");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, style);
 			}
 			if (Main.setting.Progress && !Main.setting.DeathCount || !Main.setting.Progress && Main.setting.DeathCount)
             {/*
@@ -94,7 +94,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content3, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, "TileCounter_text3");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, style);
 			}
 			if (!Main.setting.Progress && !Main.setting.DeathCount)
             {/*
@@ -108,7 +108,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content3, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, "TileCounter_text3");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, style);
 			}
 
 			if (Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy)
@@ -123,7 +123,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content4, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 3 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, "TileCounter_text4");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 3 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, style);
 			}
 			if (!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy ||
 				Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy ||
@@ -139,7 +139,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content4, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, "TileCounter_text4");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, style);
 			}
 			if (!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy ||
 				Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy ||
@@ -155,7 +155,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content4, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, "TileCounter_text4");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, style);
 			}
 			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy)
             {/*
@@ -169,7 +169,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content4, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, "TileCounter_text4");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, style);
 			}
 
 			if (Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo)
@@ -184,7 +184,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content5, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 4 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, "TileCounter_text5");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 4 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
 			if (!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo ||
 				Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo ||
@@ -201,7 +201,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content5, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 3 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, "TileCounter_text5");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 3 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
 			if (!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo ||
 				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo ||
@@ -220,7 +220,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content5, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, "TileCounter_text5");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
 			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo ||
 				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo ||
@@ -237,7 +237,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content5, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, "TileCounter_text5");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
 			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo)
             {/*
@@ -251,7 +251,7 @@ namespace ShowPlayStats
 				{
 					GUI.Label(this.ShadowTextLocation, Text.Content5, this.ShadowTextStyle);
 				}
-				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, "TileCounter_text5");
+				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
 		}
 
