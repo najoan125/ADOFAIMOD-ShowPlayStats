@@ -1,7 +1,7 @@
 ﻿using System;
 using HarmonyLib;
 
-namespace DeatsCounter
+namespace ShowPlayStats
 {
 	// Token: 0x02000003 RID: 3
 	[HarmonyPatch(typeof(scrController), "PlayerControl_Update")]

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeathsCounter
+namespace ShowPlayStats
 {
     [HarmonyPatch(typeof(scrController), "CountValidKeysPressed")]
     public static class StartLoadingPatcher

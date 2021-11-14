@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace DeatsCounter
+namespace ShowPlayStats
 {
 	// Token: 0x02000004 RID: 4
 	public class Text : MonoBehaviour

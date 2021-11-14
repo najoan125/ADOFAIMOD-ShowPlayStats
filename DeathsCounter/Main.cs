@@ -4,7 +4,7 @@ using HarmonyLib;
 using UnityEngine;
 using UnityModManagerNet;
 
-namespace DeatsCounter
+namespace ShowPlayStats
 {
 	// Token: 0x02000002 RID: 2
 	internal static class Main
