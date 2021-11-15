@@ -68,7 +68,6 @@
   <ItemGroup>
     <Compile Include="AddHitPatch.cs" />
     <Compile Include="ChangeText.cs" />
-    <Compile Include="GoToNextLevelPatch.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestartPatch.cs" />
