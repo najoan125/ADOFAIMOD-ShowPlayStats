@@ -59,13 +59,32 @@ namespace ShowPlayStats
 			isplaying = !scrController.instance.paused && scrConductor.instance.isGameWorld;
 			if (isplaying)
             {
-				if (setting.DeathCount)
+				if (setting.DeathCount && !setting.Overload)
 				{
 					Text.Content = string.Concat(new string[]
 					{
 					setting.str_deathcount + " : ",
 					//"죽은 횟수 : ",
 					ChangeText.Death.ToString()
+					});
+				}
+				if (setting.DeathCount && setting.Overload)
+				{
+					Text.Content = string.Concat(new string[]
+					{
+					setting.str_deathcount + " : ",
+					//"죽은 횟수 : ",
+					ChangeText.Death.ToString(),
+					" / " + setting.str_overload + " : ",
+					ChangeText.Overload.ToString()
+					});
+				}
+				if (!setting.DeathCount && setting.Overload)
+				{
+					Text.Content = string.Concat(new string[]
+					{
+					setting.str_overload + " : ",
+					ChangeText.Overload.ToString()
 					});
 				}
 				if (setting.Progress)
@@ -150,6 +169,7 @@ namespace ShowPlayStats
 			if (!scrConductor.instance.isGameWorld)
             {
 				ChangeText.Death = 0;
+				ChangeText.Overload = 0;
 				Main.combo = 0;
 				Main.score = 0;
             }
@@ -158,6 +178,7 @@ namespace ShowPlayStats
 				Main.combo = 0;
 				Main.score = 0;
 				ChangeText.Death = 0;
+				ChangeText.Overload = 0;
 			}
         }
 
@@ -186,6 +207,30 @@ namespace ShowPlayStats
 			{
 				setting.DeathCount = false;
 				Text.Content = " ";
+			}
+
+			bool toggleOverload = GUILayout.Toggle(setting.Overload, "과부하 표시");
+			if (toggleOverload)
+			{
+				setting.Overload = true;
+				GUILayout.BeginHorizontal();
+				GUILayout.Space(30);
+				GUILayout.Label("과부하 텍스트 : ");
+				GUILayout.BeginHorizontal();
+				String overload = setting.str_overload;
+				String overloadtxt = GUILayout.TextField(overload, GUILayout.Width(300));
+				if (overloadtxt != overload)
+				{
+					setting.str_overload = overloadtxt;
+				}
+				GUILayout.FlexibleSpace();
+				GUILayout.EndHorizontal();
+				GUILayout.EndHorizontal();
+			}
+			if (!toggleOverload)
+			{
+				setting.Overload = false;
+				//Text.Content = " ";
 			}
 
 			bool toggleProgress = GUILayout.Toggle(setting.Progress, "진행도 표시");

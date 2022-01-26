@@ -39,7 +39,7 @@ namespace ShowPlayStats
 			}
 			GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content, style);
 
-			if (Main.setting.DeathCount)
+			if (Main.setting.DeathCount || !Main.setting.DeathCount && Main.setting.Overload)
 			{/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -53,7 +53,7 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content2, style);
 			}
-			if (!Main.setting.DeathCount)
+			if (!Main.setting.DeathCount && !Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -68,7 +68,7 @@ namespace ShowPlayStats
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content2, style);
 			}
 
-			if (Main.setting.Progress && Main.setting.DeathCount)
+			if (Main.setting.Progress && Main.setting.DeathCount || Main.setting.Progress && !Main.setting.DeathCount && Main.setting.Overload)
 			{/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -82,7 +82,7 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, style);
 			}
-			if (Main.setting.Progress && !Main.setting.DeathCount || !Main.setting.Progress && Main.setting.DeathCount)
+			if (Main.setting.Progress && !Main.setting.DeathCount && !Main.setting.Overload || !Main.setting.Progress && Main.setting.DeathCount && !Main.setting.Overload || !Main.setting.Progress && !Main.setting.DeathCount && Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -96,7 +96,7 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, style);
 			}
-			if (!Main.setting.Progress && !Main.setting.DeathCount)
+			if (!Main.setting.Progress && !Main.setting.DeathCount && !Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -111,7 +111,7 @@ namespace ShowPlayStats
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content3, style);
 			}
 
-			if (Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy)
+			if (Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy || !Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && Main.setting.Overload)
 			{/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -125,9 +125,11 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 3 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, style);
 			}
-			if (!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy ||
+			if (!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && !Main.setting.Overload ||
 				Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy ||
-				Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy)
+				Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy ||
+				!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && Main.setting.Overload ||
+				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -141,9 +143,10 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, style);
 			}
-			if (!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy ||
+			if (!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && !Main.setting.Overload ||
 				Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy ||
-				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy)
+				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.Overload ||
+				!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -157,7 +160,7 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, style);
 			}
-			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy)
+			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -172,7 +175,8 @@ namespace ShowPlayStats
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content4, style);
 			}
 
-			if (Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo)
+			if (Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo ||
+				!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo && Main.setting.Overload)
 			{/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -186,10 +190,14 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 4 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
-			if (!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo ||
+			if (!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo && !Main.setting.Overload ||
 				Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo ||
 				Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo ||
-				Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo)
+				Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo ||
+
+				!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo && Main.setting.Overload ||
+				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo && Main.setting.Overload ||
+				!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo && Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -203,12 +211,16 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 3 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
-			if (!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo ||
-				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo ||
-				!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo ||
+			if (!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && Main.setting.combo && !Main.setting.Overload ||
+				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo && !Main.setting.Overload ||
+				!Main.setting.DeathCount && Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo && !Main.setting.Overload ||
 				Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo ||
 				Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo ||
-				Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo)
+				Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo ||
+
+				!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo && Main.setting.Overload ||
+				!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo && Main.setting.Overload ||
+				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo && Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -222,10 +234,11 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval * 2 + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
-			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo ||
-				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo ||
-				!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo ||
-				Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo)
+			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && Main.setting.combo && !Main.setting.Overload ||
+				!Main.setting.DeathCount && Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo && !Main.setting.Overload ||
+				!Main.setting.DeathCount && !Main.setting.Progress && Main.setting.Accuracy && !Main.setting.combo && !Main.setting.Overload ||
+				Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo ||
+				!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo && Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
@@ -239,7 +252,7 @@ namespace ShowPlayStats
 				}
 				GUI.Label(new Rect(10f + Main.setting.x, -10f + Main.setting.interval + Main.setting.y, (float)Screen.width, (float)Screen.height), Text.Content5, style);
 			}
-			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo)
+			if (!Main.setting.DeathCount && !Main.setting.Progress && !Main.setting.Accuracy && !Main.setting.combo && !Main.setting.Overload)
             {/*
 				style.normal.textColor = Color.black;
 				style.fontStyle = FontStyle.Bold;
