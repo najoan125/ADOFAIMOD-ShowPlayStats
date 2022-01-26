@@ -157,6 +157,7 @@ namespace ShowPlayStats
             {
 				Main.combo = 0;
 				Main.score = 0;
+				ChangeText.Death = 0;
 			}
         }
 

@@ -70,7 +70,6 @@ C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\U
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\UnityEngine.InputModule.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\dnlib.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\Ionic.Zip.dll
-C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\sharedRuntime.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\Ookii.Dialogs.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\Sirenix.OdinInspector.Attributes.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\Sirenix.Serialization.Config.dll
