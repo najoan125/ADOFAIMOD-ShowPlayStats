@@ -69,6 +69,7 @@
     <Compile Include="AddHitPatch.cs" />
     <Compile Include="ChangeText.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="PatchCondition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestartPatch.cs" />
     <Compile Include="Setting.cs" />

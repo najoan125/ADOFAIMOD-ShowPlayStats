@@ -7,12 +7,25 @@ using System.Threading.Tasks;
 
 namespace ShowPlayStats
 {
-    [HarmonyPatch(typeof(scrController), "CountValidKeysPressed")]
-    public static class StartLoadingPatcher
+    internal static class Patches
     {
-        public static void Postfix()
+        //[HarmonyPatch(typeof(scrController), "CountValidKeysPressed")]
+        [PatchCondition("ShowPlayStats.scrControllerCountdownPatch","scrController", "Countdown_Update")]
+        public static class StartLoadingPatcher
         {
-            Main.isdeath = false;
+            public static void Postfix()
+            {
+                Main.isdeath = false;
+            }
+        }
+
+        [PatchCondition("ShowPlayStats.scrControllerCheckpointPatch","scrController", "Checkpoint_Enter")]
+        public static class CheckpointPatcher
+        {
+            public static void Postfix()
+            {
+                Main.isdeath = false;
+            }
         }
     }
 }
