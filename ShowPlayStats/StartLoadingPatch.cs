@@ -27,5 +27,18 @@ namespace ShowPlayStats
                 Main.isdeath = false;
             }
         }
+
+        [PatchCondition("ShowPlayStats.scnEditorOpenLevelPatch","scnEditor", "ShowNotification")]
+        public static class OpenLevelPatcher
+        {
+            public static void Prefix(string text)
+            {
+                if (text == RDString.Get("editor.notification.levelLoaded", null))
+                {
+                    ChangeText.Death = 0;
+                    ChangeText.Overload = 0;
+                }
+            }
+        }
     }
 }

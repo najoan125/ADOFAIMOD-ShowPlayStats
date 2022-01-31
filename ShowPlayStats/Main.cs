@@ -172,13 +172,14 @@ namespace ShowPlayStats
 				ChangeText.Overload = 0;
 				Main.combo = 0;
 				Main.score = 0;
+				isdeath = false;
             }
 			if (scrController.instance.isEditingLevel && scrController.instance.paused)
             {
 				Main.combo = 0;
 				Main.score = 0;
-				ChangeText.Death = 0;
-				ChangeText.Overload = 0;
+				//ChangeText.Death = 0;
+				//ChangeText.Overload = 0;
 			}
         }
 
