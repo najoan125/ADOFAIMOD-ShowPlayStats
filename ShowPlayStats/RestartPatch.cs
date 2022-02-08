@@ -14,6 +14,8 @@ namespace ShowPlayStats
         {
             Main.combo = 0;
             Main.score = 0;
+            ChangeText.Death = 0;
+            ChangeText.Overload = 0;
         }
     }
 }
