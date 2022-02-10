@@ -77,3 +77,5 @@ C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\S
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\UnityModManager.xml
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\obj\Debug\ShowPlayStats.dll
 C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\obj\Debug\ShowPlayStats.pdb
+C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\Rewired_Core.dll
+C:\Users\i7PC\Documents\GitHub\ADOFAIMOD-ShowPlayStats\ShowPlayStats\bin\Debug\Rewired_Windows.dll

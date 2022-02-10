@@ -20,6 +20,7 @@ public class Setting : UnityModManager.ModSettings
     public double acc = 2;
     public double per = 2;
     public bool fontshadow = true;
+    public bool exceptOverload = false;
 
     public override void Save(UnityModManager.ModEntry modEntry)
     {

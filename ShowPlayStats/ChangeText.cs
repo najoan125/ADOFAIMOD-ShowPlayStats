@@ -15,6 +15,10 @@ namespace ShowPlayStats
 			if (isEnabled)
 			{
 				ChangeText.Death++;
+				if (!overload)
+                {
+					exceptOverload++;
+                }
 				Main.isdeath = true;
 				Main.combo = 0;
 				Main.score = 0;
@@ -26,6 +30,6 @@ namespace ShowPlayStats
 		}
 
 		// Token: 0x04000005 RID: 5
-		public static int Death, Overload;
+		public static int Death, Overload, exceptOverload;
 	}
 }

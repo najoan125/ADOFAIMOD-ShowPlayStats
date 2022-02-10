@@ -17,6 +17,7 @@ namespace ShowPlayStats
         private static String Combo = "";
 		private static String Score = "";
 		public static Setting setting;
+		public static UnityModManager.ModEntry.ModLogger Logger;
 		// Token: 0x17000001 RID: 1
 		// (get) Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		// (set) Token: 0x06000002 RID: 2 RVA: 0x00002057 File Offset: 0x00000257
@@ -59,7 +60,7 @@ namespace ShowPlayStats
 			isplaying = !scrController.instance.paused && scrConductor.instance.isGameWorld;
 			if (isplaying)
             {
-				if (setting.DeathCount && !setting.Overload)
+				if (setting.DeathCount && !setting.Overload && !setting.exceptOverload)
 				{
 					Text.Content = string.Concat(new string[]
 					{
@@ -68,7 +69,7 @@ namespace ShowPlayStats
 					ChangeText.Death.ToString()
 					});
 				}
-				if (setting.DeathCount && setting.Overload)
+				if (setting.DeathCount && setting.Overload && !setting.exceptOverload)
 				{
 					Text.Content = string.Concat(new string[]
 					{
@@ -79,6 +80,28 @@ namespace ShowPlayStats
 					ChangeText.Overload.ToString()
 					});
 				}
+
+				if (setting.DeathCount && !setting.Overload && setting.exceptOverload)
+				{
+					Text.Content = string.Concat(new string[]
+					{
+					setting.str_deathcount + " : ",
+					//"죽은 횟수 : ",
+					ChangeText.exceptOverload.ToString()
+					});
+				}
+				if (setting.DeathCount && setting.Overload && setting.exceptOverload)
+				{
+					Text.Content = string.Concat(new string[]
+					{
+					setting.str_deathcount + " : ",
+					//"죽은 횟수 : ",
+					ChangeText.exceptOverload.ToString(),
+					" / " + setting.str_overload + " : ",
+					ChangeText.Overload.ToString()
+					});
+				}
+
 				if (!setting.DeathCount && setting.Overload)
 				{
 					Text.Content = string.Concat(new string[]
@@ -170,6 +193,7 @@ namespace ShowPlayStats
             {
 				ChangeText.Death = 0;
 				ChangeText.Overload = 0;
+				ChangeText.exceptOverload = 0;
 				Main.combo = 0;
 				Main.score = 0;
 				isdeath = false;
@@ -185,14 +209,27 @@ namespace ShowPlayStats
 
 		private static void OnGUI(UnityModManager.ModEntry modEntry)
         {
-			GUILayout.Label("화면에 표시할 항목 설정");
-			bool toggleDeathCount = GUILayout.Toggle(setting.DeathCount, "죽은 횟수 표시");
+			GUILayout.Label(RDString.language == SystemLanguage.Korean ? "화면에 표시할 항목 설정" : "Set items to be displayed on the screen");
+			bool toggleDeathCount = GUILayout.Toggle(setting.DeathCount, RDString.language == SystemLanguage.Korean ? "죽은 횟수 표시" : "Show Deaths");
 			if (toggleDeathCount)
 			{
 				setting.DeathCount = true;
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				GUILayout.Label("죽은 횟수 텍스트 : ");
+				bool exceptOverload = GUILayout.Toggle(setting.exceptOverload, RDString.language == SystemLanguage.Korean ? "과부하로 죽은 횟수 제외" : "Excluding number of deaths from overload");
+				if (exceptOverload)
+				{
+					setting.exceptOverload = true;
+				}
+				if (!exceptOverload)
+				{
+					setting.exceptOverload = false;
+				}
+				GUILayout.EndHorizontal();
+
+				GUILayout.BeginHorizontal();
+				GUILayout.Space(30);
+				GUILayout.Label(RDString.language == SystemLanguage.Korean ? "죽은 횟수 텍스트 : " : "Deaths Text : ");
 				GUILayout.BeginHorizontal();
 				String death = setting.str_deathcount;
 				String deathtxt = GUILayout.TextField(death, GUILayout.Width(300));
@@ -210,13 +247,13 @@ namespace ShowPlayStats
 				Text.Content = " ";
 			}
 
-			bool toggleOverload = GUILayout.Toggle(setting.Overload, "과부하 표시");
+			bool toggleOverload = GUILayout.Toggle(setting.Overload, RDString.language == SystemLanguage.Korean ? "과부하 표시" : "Show Overload");
 			if (toggleOverload)
 			{
 				setting.Overload = true;
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				GUILayout.Label("과부하 텍스트 : ");
+				GUILayout.Label(RDString.language == SystemLanguage.Korean ? "과부하 텍스트 : " : "Overload Text : ");
 				GUILayout.BeginHorizontal();
 				String overload = setting.str_overload;
 				String overloadtxt = GUILayout.TextField(overload, GUILayout.Width(300));
@@ -234,13 +271,13 @@ namespace ShowPlayStats
 				//Text.Content = " ";
 			}
 
-			bool toggleProgress = GUILayout.Toggle(setting.Progress, "진행도 표시");
+			bool toggleProgress = GUILayout.Toggle(setting.Progress, RDString.language == SystemLanguage.Korean ? "진행도 표시" : "Show Progress");
 			if (toggleProgress)
 			{
 				setting.Progress = true;
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				GUILayout.Label("진행도 텍스트 : ");
+				GUILayout.Label(RDString.language == SystemLanguage.Korean ? "진행도 텍스트 : " : "Progress Text : ");
 				GUILayout.BeginHorizontal();
 				String progress = setting.str_progress;
 				String progresstxt = GUILayout.TextField(progress, GUILayout.Width(300));
@@ -255,7 +292,7 @@ namespace ShowPlayStats
 				GUILayout.Space(-5);
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				GUILayout.Label("진행도 소숫점 자리수 : ");
+				GUILayout.Label(RDString.language == SystemLanguage.Korean ? "진행도 소수점 자리수 : " : "Progress decimal places : ");
 				String pernum = setting.per.ToString();
 				try
 				{
@@ -281,14 +318,14 @@ namespace ShowPlayStats
 				Text.Content2 = " ";
             }
 
-			bool toggleAccuracy = GUILayout.Toggle(setting.Accuracy, "정확도 표시");
+			bool toggleAccuracy = GUILayout.Toggle(setting.Accuracy, RDString.language == SystemLanguage.Korean ? "정확도 표시" : "Show Accuracy");
 			if (toggleAccuracy)
 			{
 				setting.Accuracy = true;
 				//GUILayout.Space(-5);
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				bool accround = GUILayout.Toggle(setting.accround, "정확도 반올림");
+				bool accround = GUILayout.Toggle(setting.accround, RDString.language == SystemLanguage.Korean ? "정확도 반올림" : "Round up accuracy");
 				if (accround)
 				{
 					setting.accround = true;
@@ -302,7 +339,7 @@ namespace ShowPlayStats
 				//GUILayout.Space(-5);
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				GUILayout.Label("정확도 텍스트 : ");
+				GUILayout.Label(RDString.language == SystemLanguage.Korean ? "정확도 텍스트 : " : "Accuracy Text : ");
 				GUILayout.BeginHorizontal();
 				String acc = setting.str_accuracy;
 				String acctxt = GUILayout.TextField(acc, GUILayout.Width(300));
@@ -317,7 +354,7 @@ namespace ShowPlayStats
 				GUILayout.Space(-5);
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				GUILayout.Label("정확도 소숫점 자리수 : ");
+				GUILayout.Label(RDString.language == SystemLanguage.Korean ? "정확도 소숫점 자리수 : " : "Accuracy decimal places : ");
 				String accnum = setting.acc.ToString();
 				try
 				{
@@ -343,13 +380,13 @@ namespace ShowPlayStats
 				Text.Content3 = " ";
             }
 
-			bool toggleCombo = GUILayout.Toggle(setting.combo, "콤보 표시");
+			bool toggleCombo = GUILayout.Toggle(setting.combo, RDString.language == SystemLanguage.Korean ? "콤보 표시" : "Show combo");
 			if (toggleCombo)
 			{
 				setting.combo = true;
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				GUILayout.Label("콤보 텍스트 : ");
+				GUILayout.Label(RDString.language == SystemLanguage.Korean ? "콤보 텍스트 : " : "Combo Text : ");
 				GUILayout.BeginHorizontal();
 				String combo = setting.str_combo;
 				String combotxt = GUILayout.TextField(combo, GUILayout.Width(300));
@@ -367,13 +404,13 @@ namespace ShowPlayStats
 				Text.Content4 = " ";
             }
 
-			bool toggleScore = GUILayout.Toggle(setting.score, "점수 표시");
+			bool toggleScore = GUILayout.Toggle(setting.score, RDString.language == SystemLanguage.Korean ? "점수 표시" : "Show Score");
 			if (toggleScore)
 			{
 				setting.score = true;
 				GUILayout.BeginHorizontal();
 				GUILayout.Space(30);
-				GUILayout.Label("점수 텍스트 : ");
+				GUILayout.Label(RDString.language == SystemLanguage.Korean ? "점수 텍스트 : " : "Score Text : ");
 				GUILayout.BeginHorizontal();
 				String score = setting.str_score;
 				String scoretxt = GUILayout.TextField(score, GUILayout.Width(300));
@@ -393,7 +430,7 @@ namespace ShowPlayStats
 
 			GUILayout.Label(" ");
 			GUILayout.BeginHorizontal();
-			GUILayout.Label("폰트 크기(기본값: 40) : ");
+			GUILayout.Label(RDString.language == SystemLanguage.Korean ? "폰트 크기(기본값: 40) : " : "Font Size(Default: 40) : ");
 			String font = setting.fontsize.ToString();
 			try
 			{
@@ -413,7 +450,7 @@ namespace ShowPlayStats
 			GUILayout.EndHorizontal();
 
 			GUILayout.BeginHorizontal();
-			GUILayout.Label("텍스트 간격(기본값: 40) : ");
+			GUILayout.Label(RDString.language == SystemLanguage.Korean ? "텍스트 간격(기본값: 40) : " : "Text Interval(Default: 40) : ");
 			String textInterval = setting.interval.ToString();
             try
             {
@@ -432,7 +469,7 @@ namespace ShowPlayStats
             }
 			GUILayout.EndHorizontal();
 
-			bool toggleshadow = GUILayout.Toggle(setting.fontshadow, "텍스트 그림자 표시");
+			bool toggleshadow = GUILayout.Toggle(setting.fontshadow, RDString.language == SystemLanguage.Korean ? "텍스트 그림자 표시" : "Show Text Shadow");
 			if (toggleshadow)
             {
 				setting.fontshadow = true;
@@ -443,9 +480,9 @@ namespace ShowPlayStats
             }
 
 			GUILayout.Label(" ");
-			GUILayout.Label("좌표 설정");
+			GUILayout.Label(RDString.language == SystemLanguage.Korean ? "좌표 설정" : "Coordinate Setting");
 			GUILayout.BeginHorizontal();
-			GUILayout.Label("X좌표 : ");
+			GUILayout.Label(RDString.language == SystemLanguage.Korean ? "X좌표 : " : "X coordinate : ");
 			GUILayout.BeginHorizontal();
 			float newx = GUILayout.HorizontalSlider(setting.x, 0, 1650, GUILayout.Width(300));
 			GUILayout.Label(setting.x.ToString(), GUILayout.Width(300));
@@ -454,7 +491,7 @@ namespace ShowPlayStats
 			GUILayout.EndHorizontal();
 
 			GUILayout.BeginHorizontal();
-			GUILayout.Label("Y좌표 : ");
+			GUILayout.Label(RDString.language == SystemLanguage.Korean ? "Y좌표 : " : "Y coordinate : ");
 			GUILayout.BeginHorizontal();
 			float newy = GUILayout.HorizontalSlider(setting.y, 0, 890, GUILayout.Width(300));
 			GUILayout.Label(setting.y.ToString(), GUILayout.Width(300));

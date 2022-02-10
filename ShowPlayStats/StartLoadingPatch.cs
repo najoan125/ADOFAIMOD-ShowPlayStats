@@ -37,6 +37,7 @@ namespace ShowPlayStats
                 {
                     ChangeText.Death = 0;
                     ChangeText.Overload = 0;
+                    ChangeText.exceptOverload = 0;
                 }
             }
         }
