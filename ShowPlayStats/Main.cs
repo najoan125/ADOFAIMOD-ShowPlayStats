@@ -198,7 +198,7 @@ namespace ShowPlayStats
 				Main.score = 0;
 				isdeath = false;
             }
-			if (scrController.instance.isEditingLevel && scrController.instance.paused)
+			if (ADOBase.isEditingLevel && scrController.instance.paused)
             {
 				Main.combo = 0;
 				Main.score = 0;
