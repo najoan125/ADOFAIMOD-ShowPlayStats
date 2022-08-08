@@ -64,20 +64,20 @@ namespace ShowPlayStats
 				{
 					Text.Content = string.Concat(new string[]
 					{
-					setting.str_deathcount + " : ",
-					//"죽은 횟수 : ",
-					ChangeText.Death.ToString()
+						setting.str_deathcount + " : ",
+						//"죽은 횟수 : ",
+						ChangeText.Death.ToString()
 					});
 				}
 				if (setting.DeathCount && setting.Overload && !setting.exceptOverload)
 				{
 					Text.Content = string.Concat(new string[]
 					{
-					setting.str_deathcount + " : ",
-					//"죽은 횟수 : ",
-					ChangeText.Death.ToString(),
-					" / " + setting.str_overload + " : ",
-					ChangeText.Overload.ToString()
+						setting.str_deathcount + " : ",
+						//"죽은 횟수 : ",
+						ChangeText.Death.ToString(),
+						" / " + setting.str_overload + " : ",
+						ChangeText.Overload.ToString()
 					});
 				}
 
@@ -85,20 +85,20 @@ namespace ShowPlayStats
 				{
 					Text.Content = string.Concat(new string[]
 					{
-					setting.str_deathcount + " : ",
-					//"죽은 횟수 : ",
-					ChangeText.exceptOverload.ToString()
+						setting.str_deathcount + " : ",
+						//"죽은 횟수 : ",
+						ChangeText.exceptOverload.ToString()
 					});
 				}
 				if (setting.DeathCount && setting.Overload && setting.exceptOverload)
 				{
 					Text.Content = string.Concat(new string[]
 					{
-					setting.str_deathcount + " : ",
-					//"죽은 횟수 : ",
-					ChangeText.exceptOverload.ToString(),
-					" / " + setting.str_overload + " : ",
-					ChangeText.Overload.ToString()
+						setting.str_deathcount + " : ",
+						//"죽은 횟수 : ",
+						ChangeText.exceptOverload.ToString(),
+						" / " + setting.str_overload + " : ",
+						ChangeText.Overload.ToString()
 					});
 				}
 
@@ -106,21 +106,21 @@ namespace ShowPlayStats
 				{
 					Text.Content = string.Concat(new string[]
 					{
-					setting.str_overload + " : ",
-					ChangeText.Overload.ToString()
+						setting.str_overload + " : ",
+						ChangeText.Overload.ToString()
 					});
 				}
 				if (setting.Progress)
 				{
 					Text.Content2 = string.Concat(new string[]
 					{
-					setting.str_progress + " : ",
-					//"진행도 : ",
-					Progress().ToString(),
-					"%"
+						setting.str_progress + " : ",
+						//"진행도 : ",
+						Progress().ToString(),
+						"%"
 					});
 				}
-                if (!isdeath)
+                if (!isdeath || scrController.instance.noFail)
                 {
 					정확도 = Accuracy().ToString();
 					Combo = combo.ToString();
@@ -129,55 +129,55 @@ namespace ShowPlayStats
 					{
 						Text.Content3 = string.Concat(new string[]
 						{
-						setting.str_accuracy + " : ",
-						Accuracy().ToString(),
+							setting.str_accuracy + " : ",
+							Accuracy().ToString(),
 						"%"
 						});
 					}
 					if (setting.combo)
 					{
 						Text.Content4 = string.Concat(new string[]
-	{
-					setting.str_combo + " : ",
-					combo.ToString()
-	});
+						{
+							setting.str_combo + " : ",
+							combo.ToString()
+						});
 					}
 					if (setting.score)
 					{
 						Text.Content5 = string.Concat(new string[]
-	{
-					setting.str_score + " : ",
-					score.ToString()
-	});
+						{
+							setting.str_score + " : ",
+							score.ToString()
+						});
 					}
 				}
 
-				if (isdeath)
+				if (isdeath && !scrController.instance.noFail)
 				{
 					if (setting.Accuracy)
 					{
 						Text.Content3 = string.Concat(new string[]
 						{
-						setting.str_accuracy + " : ",
-						정확도,
-						"%"
+							setting.str_accuracy + " : ",
+							정확도,
+							"%"
 						});
 					}
 					if (setting.combo)
 					{
 						Text.Content4 = string.Concat(new string[]
-	{
-					setting.str_combo + " : ",
-					Combo
-	});
+						{
+							setting.str_combo + " : ",
+							Combo
+						});
 					}
 					if (setting.score)
 					{
 						Text.Content5 = string.Concat(new string[]
-	{
-					setting.str_score + " : ",
-					Score
-	});
+						{
+							setting.str_score + " : ",
+							Score
+						});
 					}
 				}
 			}

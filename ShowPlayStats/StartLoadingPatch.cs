@@ -41,5 +41,14 @@ namespace ShowPlayStats
                 }
             }
         }
+
+        [HarmonyPatch(typeof(scnEditor),"Play")]
+        public static class PlayPatch
+        {
+            public static void Prefix()
+            {
+                Main.isdeath = false;
+            }
+        }
     }
 }
